@@ -1,7 +1,7 @@
 import { Head, Link, useForm } from "@inertiajs/react";
 import type { FormEvent } from "react";
 
-export default function Login() {
+export default function Login({ status }: { status: string }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
@@ -20,8 +20,9 @@ export default function Login() {
         <>
             <Head title="Login" />
 
+            {status && <p role="status">{status}</p>}
             <main>
-                <h1>Welcome back to mogi!</h1>
+                <h1>Welcome back!</h1>
 
                 <form onSubmit={submit}>
                     <label htmlFor="email">Email</label>

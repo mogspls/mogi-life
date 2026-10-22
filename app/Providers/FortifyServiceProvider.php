@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use Laravel\Fortify\Contracts\PasswordResetResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -21,7 +22,17 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(
+            PasswordResetResponse::class,
+            fn () => new class implements PasswordResetResponse {
+                public function toResponse($request)
+                {
+                    return redirect()
+                        ->route('login', [], 303)
+                        ->with('status', __('passwords.reset'));
+                }
+            }
+        );
     }
 
     /**

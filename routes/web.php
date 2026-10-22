@@ -1,25 +1,36 @@
 <?php
+
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Auth;
 
 Route::inertia('/', 'welcome')->name('home');
 
 Route::middleware('guest')->group(function () {
 
-    Route::inertia('/login', 'auth/login')
-        ->name('login');
-
+    Route::get('/login', function (Request $request) {
+        return Inertia::render('auth/login', [
+            'status' => $request->session()->get('status'),
+        ]);
+    })->name('login');
+    
     Route::inertia('/register', 'auth/register')
         ->name('register');
 
-    Route::inertia('/forgot-password', 'auth/forgot-password')
-        ->name('password.request');
+    Route::get('/forgot-password', function (Request $request) {
+        return Inertia::render('auth/forgot-password', [
+            'status' => $request->session()->get('status'),
+        ]);
+    })->name('password.request');
 
-    Route::get('/reset-password/{token}', function (string $token) {
+    Route::get('/reset-password/{token}', function (
+        Request $request,
+        string $token
+    ) {
         return Inertia::render('auth/reset-password', [
             'token' => $token,
-            'email' => request()->query('email', ''),
+            'email' => $request->query('email', ''),
         ]);
     })->name('password.reset');
 });
@@ -27,7 +38,10 @@ Route::middleware('guest')->group(function () {
 
 // Protected routes
 Route::middleware('auth')->group(function () {
-    Route::resource('dashboard', DashboardController::class);
+    // Route::resource('dashboard', DashboardController::class);
+    Route::get('/feed', function () {
+        return Inertia::render('dashboard', [
+            'user' => Auth::user(),
+        ]);
+    });
 });
-
-
