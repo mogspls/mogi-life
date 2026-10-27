@@ -1,4 +1,6 @@
-import { useForm } from "@inertiajs/react";
+import Chatbox from "@/components/chat/chat-box";
+import { ChatMessage, User } from "@/types";
+// import { useForm } from "@inertiajs/react";
 
 interface DashboardProps {
     user: {
@@ -8,13 +10,12 @@ interface DashboardProps {
     }
 }
 
-function logout() {
-}
-
-export default function Dashboard({ user }: DashboardProps) {
+export default function Dashboard({ user, messages }: {user: User, messages: ChatMessage}) {
     return (
         <main>
             <p>Welcome, {user.email}</p>
+
+            <Chatbox user={user ?? null}/>
         </main>
     )
 }

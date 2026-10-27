@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 
+
 Route::inertia('/', 'welcome')->name('home');
+Route::get('/chat/messages', [ChatController::class, 'index'])->name('chat.messages.index');
+Route::post('/chat/messages', [ChatController::class, 'store'])->middleware(['auth', 'throttle:30,1'])->name('chat.messages.store');
 
 Route::middleware('guest')->group(function () {
 
@@ -14,7 +18,7 @@ Route::middleware('guest')->group(function () {
             'status' => $request->session()->get('status'),
         ]);
     })->name('login');
-    
+
     Route::inertia('/register', 'auth/register')
         ->name('register');
 
@@ -44,4 +48,11 @@ Route::middleware('auth')->group(function () {
             'user' => Auth::user(),
         ]);
     });
+
+    Route::get('/chat/messages', [ChatController::class, 'index'])
+        ->name('chat.messages.index');
+
+    Route::post('/chat/messages', [ChatController::class, 'store'])
+        ->middleware('throttle:30,1')
+        ->name('chat.messages.store');
 });

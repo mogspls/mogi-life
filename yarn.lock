@@ -324,6 +324,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@laravel/echo-react@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "@laravel/echo-react@npm:2.6.1"
+  peerDependencies:
+    pusher-js: "*"
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    socket.io-client: "*"
+  peerDependenciesMeta:
+    pusher-js:
+      optional: true
+    socket.io-client:
+      optional: true
+  checksum: 10c0/e5afd34b8e2a85eec2ceb7f51e123cb0e5b8fa0f97196d88fcdff959a61221586ccf56e297f993fa8c942ea80730a5ba7aefc7be408da6ed19c7d242fac1cf1f
+  languageName: node
+  linkType: hard
+
 "@laravel/multiplex@npm:^0.4.1":
   version: 0.4.5
   resolution: "@laravel/multiplex@npm:0.4.5"
@@ -1914,6 +1930,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"laravel-echo@npm:^2.6.1":
+  version: 2.6.1
+  resolution: "laravel-echo@npm:2.6.1"
+  peerDependencies:
+    pusher-js: "*"
+    socket.io-client: "*"
+  peerDependenciesMeta:
+    pusher-js:
+      optional: true
+    socket.io-client:
+      optional: true
+  checksum: 10c0/dde745e0b57fcfa35da071f7e65a5e62e2635c1f526d954135aae41d63f856ec76529b0997c5cba6e8b99d04d0a83b037d922887cc1aa2184566228d3484cf37
+  languageName: node
+  linkType: hard
+
 "laravel-precognition@npm:^2.1.0":
   version: 2.1.1
   resolution: "laravel-precognition@npm:2.1.1"
@@ -2438,6 +2469,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"pusher-js@npm:^8.6.0":
+  version: 8.6.0
+  resolution: "pusher-js@npm:8.6.0"
+  dependencies:
+    tweetnacl: "npm:^1.0.3"
+  checksum: 10c0/93ed5ecc9eb30c2b3d8bd17eeb3b18a7a2e54480129eebb848c1837e9f7ea19d2cda124c833a6a6a460eb33b70b97976a7355f6f83193f43f7838f8511d34982
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:^19.2.0":
   version: 19.3.1
   resolution: "react-dom@npm:19.3.1"
@@ -2549,6 +2589,7 @@ __metadata:
     "@babel/core": "npm:^8.0.7"
     "@inertiajs/react": "npm:^3.0.0"
     "@inertiajs/vite": "npm:^3.0.0"
+    "@laravel/echo-react": "npm:^2.6.1"
     "@laravel/multiplex": "npm:^0.4.1"
     "@laravel/vite-plugin-wayfinder": "npm:^0.1.3"
     "@rolldown/plugin-babel": "npm:^0.2.3"
@@ -2561,8 +2602,10 @@ __metadata:
     babel-plugin-react-compiler: "npm:^1.0.0"
     clsx: "npm:^2.1.1"
     concurrently: "npm:^10.0.3"
+    laravel-echo: "npm:^2.6.1"
     laravel-vite-plugin: "npm:^3.1"
     lightningcss-linux-x64-gnu: "npm:^1.29.1"
+    pusher-js: "npm:^8.6.0"
     react: "npm:^19.2.0"
     react-dom: "npm:^19.2.0"
     typescript: "npm:^5.7.2"
@@ -2806,6 +2849,13 @@ __metadata:
   version: 2.8.1
   resolution: "tslib@npm:2.8.1"
   checksum: 10c0/9c4759110a19c53f992d9aae23aac5ced636e99887b51b9e61def52611732872ff7668757d4e4c61f19691e36f4da981cd9485e869b4a7408d689f6bf1f14e62
+  languageName: node
+  linkType: hard
+
+"tweetnacl@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "tweetnacl@npm:1.0.3"
+  checksum: 10c0/069d9df51e8ad4a89fbe6f9806c68e06c65be3c7d42f0701cc43dba5f0d6064686b238bbff206c5addef8854e3ce00c643bff59432ea2f2c639feab0ee1a93f9
   languageName: node
   linkType: hard
 
